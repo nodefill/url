@@ -1,0 +1,7 @@
+<script type="module">
+  import pathToFileURL from "../src/pathToFileURL-browser.ts";
+
+  console.log(pathToFileURL("file.txt").href);
+  console.log(pathToFileURL("/hello/world").href);
+  console.log(pathToFileURL("C:\\hello\\world").href);
+</script>

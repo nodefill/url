@@ -1,39 +1,36 @@
 {
-  "name": "url",
-  "description": "The core `url` packaged standalone for use with Browserify.",
-  "version": "0.11.1",
-  "author": "defunctzombie",
-  "dependencies": {
-    "punycode": "^1.4.1",
-    "qs": "^6.11.0"
-  },
-  "main": "./url.js",
-  "keywords": [
-    "parsing",
-    "url",
-    "analyze"
-  ],
+  "type": "commonjs",
+  "name": "@nodefill/url",
+  "version": "0.1.0",
   "devDependencies": {
-    "@ljharb/eslint-config": "^21.1.0",
-    "acorn": "^8.8.2",
-    "aud": "^2.0.2",
-    "eslint": "=8.8.0",
-    "mocha": "^3.5.3",
-    "nyc": "^10.3.2",
-    "zuul": "^3.12.0"
+    "@types/node": "^20.4.2",
+    "patch-package": "^7.0.2",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.4",
+    "vite-plugin-commonjs": "^0.8.1"
+  },
+  "exports": {
+    ".": null,
+    "./pathToFileURL.js": {
+      "browser": "./dist/pathToFileURL.js"
+    },
+    "./fileURLToPath.js": {
+      "browser": "./dist/fileURLToPath.js"
+    },
+    "./lib/*": null,
+    "./*.js": "./dist/*.js"
   },
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "tests-only": "nyc mocha",
-    "test": "npm run tests-only",
-    "posttest": "aud --production",
-    "zuul": "zuul -- test/index.js",
-    "test-local": "zuul --local -- test/index.js"
+    "lint": "prettier --ignore-path .gitignore -w . && tsc --noEmit",
+    "test": "vite",
+    "build": "tsc"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/defunctzombie/node-url.git"
+  "license": "MIT",
+  "dependencies": {
+    "@nodefill/path": "^0.1.1"
   },
-  "license": "MIT"
+  "files": [
+    "dist"
+  ]
 }
